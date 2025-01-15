@@ -10,17 +10,14 @@ name1.addEventListener('input',()=>{
     value=name1.value;
     console.log(value);
         })
- function callApi(){
+async function callApi(){
     
     
-  fetch(`https://api.github.com/users/${value}`)
-  .then(data=> data.json())
-  .then(data=> {
-    console.log(data);
+ const response=await fetch(`https://api.github.com/users/${value}`);
+ const data=await response.json();
+ console.log(data);
 info.innerText=data?.name;
 img.src=data?.avatar_url;
-
-  })
 }
 
 
